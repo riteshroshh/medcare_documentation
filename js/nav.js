@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (home) home.classList.add('active');
       
       const basePath = '';
-      history.pushState({ page: 'overview' }, '', basePath + '?p=overview');
+      history.pushState({ page: 'overview' }, '', window.location.pathname + '?p=overview');
       window.renderPage('overview');
     });
   }
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       
       const basePath = '';
-      history.pushState({ page: pageId }, '', '?p=' + pageId);
+      history.pushState({ page: pageId }, '', window.location.pathname + '?p=' + pageId);
       window.renderPage(pageId);
     });
   });
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function () {
         searchInput.value = '';
         
         const basePath = '';
-        history.pushState({ page: p.id }, '', '?p=' + p.id);
+        history.pushState({ page: p.id }, '', window.location.pathname + '?p=' + p.id);
         window.renderPage(p.id);
         const link = document.querySelector('.nav-item[data-page="' + p.id + '"]');
         if (link) {
@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', function () {
         closeCmdK();
         
         const basePath = '';
-        history.pushState({ page: p.id }, '', '?p=' + p.id);
+        history.pushState({ page: p.id }, '', window.location.pathname + '?p=' + p.id);
         window.renderPage(p.id);
       });
       cmdKResults.appendChild(item);

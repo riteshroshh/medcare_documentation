@@ -1,16 +1,15 @@
 window.PAGES = window.PAGES || {};
 window.PAGES['structured_data_input'] = () => `
 <div class="page-chip">medcare_ai / structured_data_input</div>
-# Structured Data Input
+# Structured Data Normalization
 
-Providers should be able to enter foundational clinical vectors efficiently. The system ingests and processes the following basic information blocks:
+The backend utilizes strict normalization protocols before dispatching data to the multi-agent pipeline. 
 
-* **Chief Complaint**
-* **History of Present Illness (HPI)**
-* **Diagnoses**
-* **Medications**
-* **Lab Results**
-* **Assessment & Plan**
-* **Vital Signs**
-* **Review of Systems (ROS) & Physical Exam findings**
+### HPI Ontology Mapping
+The \`mapHpiToCMS()\` function in the evaluation pipeline is responsible for translating user-friendly frontend nomenclature into strict CMS OLDCARTS terminology.
+- \`hpi.character\` is transpiled to \`mapped.quality\`
+- \`hpi.alleviating\` is transpiled to \`mapped.modifying_factors\`
+- \`hpi.associated\` is transpiled to \`mapped.associated_signs\`
+
+This deterministic mapping dramatically improves the zero-shot inference accuracy of the downstream Gemini 2.5 Pro model during compliance auditing.
 `;

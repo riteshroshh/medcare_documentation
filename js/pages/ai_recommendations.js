@@ -1,12 +1,12 @@
 window.PAGES = window.PAGES || {};
 window.PAGES['ai_recommendations'] = () => `
 <div class="page-chip">medcare_ai / ai_recommendations</div>
-# AI Recommendations
+# Proactive AI Recommendations
 
-The tool acts as a proactive cognitive assistant during the documentation process. It continually evaluates the clinical context to suggest:
+The \`aiRecommendationEngine.js\` operates asynchronously alongside the primary scoring engines to generate non-blocking cognitive insights.
 
-* **Additional Diagnoses**: Recommends diagnoses supported by the current documentation context (e.g., lab results indicating an undocumented condition).
-* **Missing Chronic Conditions**: Flags historical chronic conditions not addressed in the current encounter.
-* **Complexity Enhancements**: Suggests additional documentation needed to legitimately support higher-complexity visits.
-* **Preventive Services**: Identifies preventive services that may be due based on patient history and demographics.
+Using a highly focused Gemini 2.5 Flash system instruction, the engine scans the \`noteData\` payload for implicit care opportunities:
+* **Missing Diagnoses**: Correlating medication arrays (e.g., Metformin) against the diagnoses array to identify undocumented conditions.
+* **Upcoding Opportunities**: Flagging instances where the documentation density exceeds the provider's manually selected E/M level.
+* **Care Management**: Evaluating chronic condition counts against Chronic Care Management (CCM) and Principal Care Management (PCM) eligibility heuristics.
 `;

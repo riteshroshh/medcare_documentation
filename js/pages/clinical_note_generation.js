@@ -1,22 +1,13 @@
 window.PAGES = window.PAGES || {};
 window.PAGES['clinical_note_generation'] = () => `
 <div class="page-chip">medcare_ai / clinical_note_generation</div>
-# Clinical Note Generation
+# Clinical Note Generation Engine
 
-The documentation assistant supports generation across a spectrum of clinical encounter types.
+The note generation logic is encapsulated within \`noteGenerationEngine.js\`. We employ a resilient LLM parsing strategy to construct CMS-compliant SOAP notes.
 
-* **Progress Notes**
-* **History & Physical (H&P)**
-* **Consultation Notes**
-* **Discharge Summaries**
-* **Nursing Facility Notes**
-* **Annual Wellness Visits**
+### Resilient Parsing Strategy
+The \`safeParseNote(raw)\` function utilizes regex to strip arbitrary markdown fencing (\`\\\`\\\`\\\`json\`) injected by the LLM, forcing the string into a valid JSON object. We enforce strict structural integrity by throwing errors if any of the required SOAP keys (\`subjective\`, \`objective\`, \`assessment\`, \`plan\`) are missing from the parsed AST.
 
-### Advanced Care & Management Notes
-* Chronic Care Management (CCM)
-* Principal Care Management (PCM)
-* Transitional Care Management (TCM)
-* Remote Physiologic Monitoring (RPM)
-* Advance Care Planning (ACP)
-* Cognitive Assessment documentation
+### Contextual Fallback
+In the event of an upstream Gemini API timeout or hallucination, the engine catches the exception and immediately invokes a deterministic fallback sequence. This sequence reconstructs a primitive but valid note directly from the raw structured \`noteData\` arrays, guaranteeing zero downtime and uninterrupted provider workflows.
 `;

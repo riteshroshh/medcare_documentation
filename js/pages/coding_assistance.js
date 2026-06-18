@@ -1,13 +1,17 @@
 window.PAGES = window.PAGES || {};
 window.PAGES['coding_assistance'] = () => `
 <div class="page-chip">medcare_ai / coding_assistance</div>
-# Coding Assistance
+# Algorithmic Coding Assistance
 
-Based on the documentation ingested, the tool dynamically computes the optimal coding vectors:
+The \`codingEngine.js\` architecture maps clinical narratives to the highest-specificity ICD-10-CM and CPT codes.
 
-* **Suggest ICD-10 Diagnosis Codes**: Resolves clinical text to appropriate, highest-specificity ICD-10 codes.
-* **Suggest CPT/HCPCS Codes**: Maps procedures and services to current procedural terminology.
-* **Recommend E/M Level**: Computes appropriate E/M (99202–99215, 99304–99310, etc.) based on Medical Decision Making (MDM) or Total Time.
-* **Provide Justification**: Surfaces the exact components used to derive the recommended code level.
-* **Flag Deficiencies**: Proactively flags documentation gaps that may result in downcoding or negative audit findings.
+### Gemini 2.5 Flash Integration
+The engine utilizes a constrained JSON schema that forces the model to return arrays of ICD-10 and CPT objects containing:
+- \`code\`: The exact alphanumeric code.
+- \`confidence\`: The model's confidence interval.
+- \`justification\`: A text explanation of the clinical linkage.
+- \`hcc_relevant\`: A boolean flag identifying Risk Adjustment impact.
+
+### E/M Injection Protocol
+To prevent AI hallucination regarding Medical Decision Making (MDM), the pipeline filters out any E/M codes (prefixes \`9921\`, \`9920\`, etc.) hallucinated by the LLM. It then deterministically injects the hard-calculated E/M code (derived from our \`mdmScoringEngine\`) at the 0-index of the CPT array.
 `;

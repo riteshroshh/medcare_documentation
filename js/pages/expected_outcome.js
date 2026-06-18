@@ -1,13 +1,11 @@
 window.PAGES = window.PAGES || {};
 window.PAGES['expected_outcome'] = () => `
 <div class="page-chip">medcare_ai / expected_outcome</div>
-# Expected Outcome
+# Expected Execution Pipeline
 
-The provider enters basic clinical information, and the system dynamically computes and yields the following sequence of deliverables:
+The core execution path is defined in \`evaluationPipeline.js\`. When a provider submits structured clinical data, the system initiates a highly concurrent, multi-agent evaluation sequence:
 
-1. **CMS-Compliant Note Generation**: Generates a strictly compliant clinical note structure based on payer guidelines.
-2. **Code Recommendations**: Recommends the appropriate CPT and ICD-10 codes.
-3. **E/M Level Determination**: Determines the supported E/M level ($$L_{EM}$$) utilizing MDM or Time-based constraints.
-4. **Documentation Gap Analysis**: Identifies critical documentation gaps before note finalization.
-5. **Audit-Ready Output**: Provides a highly structured, audit-ready final note.
+1. **Agent 1 (Deterministic Pre-Check)**: Executes purely algorithmic structural validations (e.g., Chief Complaint string length checks, Assessment-Plan linkage arrays, HPI OLDCARTS element counting) operating at $O(N)$ time complexity.
+2. **Agent 2 (LLM MEAT Criteria)**: Dispatches a high-temperature constrained prompt to Gemini-2.5-Pro to extract complex clinical contexts, HCC Risk Adjustments, and MEAT criteria (Monitor, Evaluate, Assess, Treat) from unstructured narrative fields.
+3. **Agent 3 (Aggregator & Scorer)**: Merges the deterministic array and AI evaluation arrays, deduplicating identical issues via $O(1)$ hash map lookups. It computes a final compliance score by applying strict severity weights (-20 for Critical, -10 for Warning, -3 for Info).
 `;

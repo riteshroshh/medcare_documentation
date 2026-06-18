@@ -1,8 +1,8 @@
 // ─── All page content ───────────────────────────────────────────────────────
 
-window.PAGES = {
+window.PAGES = window.PAGES || {};
 
-overview: () => `
+window.PAGES['overview'] = () => `
 <div class="page-chip">Project medcare / internal brief</div>
 <h1>Project MedCare: Internal Brief</h1>
 <p><strong>Author:</strong> Ritesh Roshan</p>
@@ -156,9 +156,7 @@ ai_recommendations: () => `
 </ul>
 `
 
-};
-
-// ─── Rendering Engine ────────────────────────────────────────────────────────
+// End of overview
 function renderMath(el) {
   if (window.renderMathInElement) {
     window.renderMathInElement(el, {

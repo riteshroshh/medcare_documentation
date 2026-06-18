@@ -1017,7 +1017,7 @@ pre:hover .copy-btn {
   padding-left: 1.2rem;
 }
 .sleek-card-body li::before {
-  content: "?";
+  content: "\2192";
   position: absolute;
   left: 0;
   color: var(--link);

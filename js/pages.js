@@ -44,9 +44,9 @@ window.PAGES['overview'] = () => `
   <li><a href="https://www.cms.gov/medicare-coverage-database/view/article.aspx?articleid=53296" target="_blank">Wound Care and Debridement Coding Requirements (CPT 97597, 97598)</a></li>
   <li><a href="https://www.cms.gov/files/document/mln909381-provider-information-medicare-diabetes-self-management-training.pdf" target="_blank">Medicare Diabetes Self-Management Training (DSMT) Guidelines</a></li>
 </ul>
-`,
+`;
 
-note_generation: () => `
+window.PAGES['note_generation'] = () => `
 <div class="page-chip">medcare_documentation / note_generation</div>
 <h1>Clinical Note Generation</h1>
 <p>The system is designed to handle multiple specialized note types and structured data inputs efficiently.</p>
@@ -74,9 +74,9 @@ note_generation: () => `
   <li>Vital Signs</li>
   <li>ROS (Review of Systems) and Physical Exam findings</li>
 </ul>
-`,
+`;
 
-compliance_validation: () => `
+window.PAGES['compliance_validation'] = () => `
 <div class="page-chip">medcare_documentation / compliance_validation</div>
 <h1>CMS Compliance Validation</h1>
 <p>The tool acts as a real-time compliance auditor. It should strictly review documentation against CMS guidelines and immediately identify critical gaps.</p>
@@ -92,9 +92,9 @@ compliance_validation: () => `
   <li>Missing time documentation when applicable</li>
   <li>Missing CCM / PCM / TCM / RPM requirements</li>
 </ul>
-`,
+`;
 
-coding_assistance: () => `
+window.PAGES['coding_assistance'] = () => `
 <div class="page-chip">medcare_documentation / coding_assistance</div>
 <h1>Coding Assistance</h1>
 <p>Based on the analyzed documentation, the tool should provide explicit billing and coding recommendations.</p>
@@ -107,9 +107,9 @@ coding_assistance: () => `
   <li>Provide explicit justification for the recommended code level.</li>
   <li>Flag documentation deficiencies that may result in downcoding or audit findings.</li>
 </ul>
-`,
+`;
 
-audit_readiness: () => `
+window.PAGES['audit_readiness'] = () => `
 <div class="page-chip">medcare_documentation / audit_readiness</div>
 <h1>Audit Readiness</h1>
 <p>The system must protect providers against post-payment audits by generating proactive compliance reports.</p>
@@ -123,9 +123,9 @@ audit_readiness: () => `
   <li>Documentation deficiency report</li>
   <li>Suggested improvements before note finalization</li>
 </ul>
-`,
+`;
 
-specialty_templates: () => `
+window.PAGES['specialty_templates'] = () => `
 <div class="page-chip">medcare_documentation / specialty_templates</div>
 <h1>Specialty-Specific Templates</h1>
 <p>Clinical workflows differ significantly by specialty. The assistant must dynamically adapt its templates and heuristic evaluations to support:</p>
@@ -139,9 +139,9 @@ specialty_templates: () => `
   <li>Endocrinology</li>
   <li>Physical Therapy oversight</li>
 </ul>
-`,
+`;
 
-ai_recommendations: () => `
+window.PAGES['ai_recommendations'] = () => `
 <div class="page-chip">medcare_documentation / ai_recommendations</div>
 <h1>AI Recommendations</h1>
 <p>The system should not just act as a passive checker—it must be an active cognitive assistant.</p>
@@ -203,13 +203,13 @@ function renderPage(pageId) {
       const isPlanned = document.querySelector('.nav-item[data-page="' + pageId + '"]');
       if (isPlanned) {
         const formattedTitle = isPlanned.textContent.trim();
-        fn = () => \`
+        fn = () => `
           <div class="page-chip" style="color: #ec4899; border-color: rgba(236,72,153,0.3); background: rgba(236,72,153,0.05);">coming soon</div>
           <h1 style="margin-top: 1rem; font-size: 3rem; background: linear-gradient(135deg, #fff, #a0a0a0); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">\${formattedTitle}</h1>
           <p class="lead" style="color: var(--muted);">This neural pathway is currently under construction. The weights are still converging.</p>
-        \`;
+        `;
       } else {
-        fn = () => \`
+        fn = () => `
           <div style="min-height: 70vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
             <div style="font-family: var(--font-mono); font-size: 8rem; font-weight: 700; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.1); margin-bottom: -1rem; letter-spacing: -0.05em;">404</div>
             <h1 style="font-size: 2.5rem; color: var(--heading);">Dead End</h1>
@@ -217,7 +217,7 @@ function renderPage(pageId) {
               This dimensional coordinate does not exist.
             </p>
           </div>
-        \`;
+        `;
       }
     }
     el.innerHTML = fn();
@@ -258,23 +258,23 @@ function renderPage(pageId) {
       if (currentIndex > 0) {
         const prev = allNavItems[currentIndex - 1];
         let prevTitle = prev.textContent.trim();
-        navHtml += \`<a href="\${basePath}\${prev.dataset.page}" data-page="\${prev.dataset.page}" class="page-nav-btn prev">
+        navHtml += `<a href="\${basePath}\${prev.dataset.page}" data-page="\${prev.dataset.page}" class="page-nav-btn prev">
                       <span class="nav-label">&larr; Previous</span>
                       <span class="nav-title">\${prevTitle}</span>
-                    </a>\`;
+                    </a>`;
       } else {
-        navHtml += \`<div></div>\`;
+        navHtml += `<div></div>`;
       }
       
       if (currentIndex < allNavItems.length - 1) {
         const next = allNavItems[currentIndex + 1];
         let nextTitle = next.textContent.trim();
-        navHtml += \`<a href="\${basePath}\${next.dataset.page}" data-page="\${next.dataset.page}" class="page-nav-btn next">
+        navHtml += `<a href="\${basePath}\${next.dataset.page}" data-page="\${next.dataset.page}" class="page-nav-btn next">
                       <span class="nav-label">Next &rarr;</span>
                       <span class="nav-title">\${nextTitle}</span>
-                    </a>\`;
+                    </a>`;
       } else {
-        navHtml += \`<div></div>\`;
+        navHtml += `<div></div>`;
       }
       
       navHtml += '</div>';
@@ -349,7 +349,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (pageId) {
     history.replaceState({ page: pageId }, '', basePath + pageId + (window.location.hash ? window.location.hash : ''));
   } else {
-    const path = window.location.pathname.replace(basePath, '').replace(/^\\//, '').replace(/\\/$/, '');
+    const path = window.location.pathname.replace(basePath, '').replace(/^\//, '').replace(/\/$/, '');
     pageId = path || window.location.hash.replace('#', '') || 'overview';
   }
   

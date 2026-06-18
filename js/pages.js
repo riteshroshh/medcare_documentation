@@ -255,14 +255,14 @@ function renderPage(pageId) {
     const currentIndex = allNavItems.findIndex(navEl => navEl.dataset.page === pageId);
     
     if (currentIndex !== -1) {
-      const isGithubPages = window.location.pathname.startsWith('/medcare_ai');
-      const basePath = isGithubPages ? '/medcare_ai/' : '/';
+      
+      const basePath = '';
       let navHtml = '<div class="page-navigation">';
       
       if (currentIndex > 0) {
         const prev = allNavItems[currentIndex - 1];
         let prevTitle = prev.textContent.trim();
-        navHtml += `<a href="${basePath}?p=${prev.dataset.page}" data-page="${prev.dataset.page}" class="page-nav-btn prev">
+        navHtml += `<a href="?p=${prev.dataset.page}" data-page="${prev.dataset.page}" class="page-nav-btn prev">
                       <span class="nav-label">&larr; Previous</span>
                       <span class="nav-title">${prevTitle}</span>
                     </a>`;
@@ -273,7 +273,7 @@ function renderPage(pageId) {
       if (currentIndex < allNavItems.length - 1) {
         const next = allNavItems[currentIndex + 1];
         let nextTitle = next.textContent.trim();
-        navHtml += `<a href="${basePath}?p=${next.dataset.page}" data-page="${next.dataset.page}" class="page-nav-btn next">
+        navHtml += `<a href="?p=${next.dataset.page}" data-page="${next.dataset.page}" class="page-nav-btn next">
                       <span class="nav-label">Next &rarr;</span>
                       <span class="nav-title">${nextTitle}</span>
                     </a>`;
@@ -347,16 +347,14 @@ window.renderPage = renderPage;
 document.addEventListener('DOMContentLoaded', function() {
   const urlParams = new URLSearchParams(window.location.search);
   let pageId = urlParams.get('p');
-  const isGithubPages = window.location.pathname.startsWith('/medcare_ai');
-  const basePath = isGithubPages ? '/medcare_ai/' : '/';
+  
+  const basePath = '';
 
   if (pageId) {
-    history.replaceState({ page: pageId }, '', basePath + '?p=' + pageId + (window.location.hash ? window.location.hash : ''));
+    history.replaceState({ page: pageId }, '', '?p=' + pageId + (window.location.hash ? window.location.hash : ''));
   } else {
-    // If no p parameter, use hash or path as fallback
-    const path = window.location.pathname.replace(basePath, '').replace(/^\//, '').replace(/\/$/, '');
-    pageId = path || window.location.hash.replace('#', '') || 'overview';
-    history.replaceState({ page: pageId }, '', basePath + '?p=' + pageId + (window.location.hash ? window.location.hash : ''));
+    pageId = window.location.hash.replace('#', '') || 'overview';
+    history.replaceState({ page: pageId }, '', '?p=' + pageId + (window.location.hash ? window.location.hash : ''));
   }
   
   // ensure we map correctly since hashes might include the :: syntax for headers

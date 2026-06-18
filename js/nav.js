@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
       document.querySelectorAll('.nav-item').forEach(l => l.classList.remove('active'));
       const home = document.querySelector('.nav-item[data-page="overview"]');
       if (home) home.classList.add('active');
-      const isGithubPages = window.location.pathname.startsWith('/medcare_ai');
-      const basePath = isGithubPages ? '/medcare_ai/' : '/';
+      
+      const basePath = '';
       history.pushState({ page: 'overview' }, '', basePath + '?p=overview');
       window.renderPage('overview');
     });
@@ -47,9 +47,9 @@ document.addEventListener('DOMContentLoaded', function () {
         if (toggle) toggle.classList.add('open');
       }
 
-      const isGithubPages = window.location.pathname.startsWith('/medcare_ai');
-      const basePath = isGithubPages ? '/medcare_ai/' : '/';
-      history.pushState({ page: pageId }, '', basePath + '?p=' + pageId);
+      
+      const basePath = '';
+      history.pushState({ page: pageId }, '', '?p=' + pageId);
       window.renderPage(pageId);
     });
   });
@@ -60,10 +60,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if (e.state && e.state.page) {
       pageId = e.state.page;
     } else {
-      const isGithubPages = window.location.pathname.startsWith('/medcare_ai');
-      const basePath = isGithubPages ? '/medcare_ai/' : '/';
-      const path = window.location.pathname.replace(basePath, '').replace(/^\//, '').replace(/\/$/, '');
-      pageId = path || window.location.hash.replace('#', '') || 'overview';
+      const urlParams = new URLSearchParams(window.location.search);
+      pageId = urlParams.get('p') || window.location.hash.replace('#', '') || 'overview';
     }
     const parts = pageId.split('::');
     pageId = parts[0];
@@ -173,9 +171,9 @@ document.addEventListener('DOMContentLoaded', function () {
       item.addEventListener('click', function () {
         searchResults.style.display = 'none';
         searchInput.value = '';
-        const isGithubPages = window.location.pathname.startsWith('/medcare_ai');
-        const basePath = isGithubPages ? '/medcare_ai/' : '/';
-        history.pushState({ page: p.id }, '', basePath + '?p=' + p.id);
+        
+        const basePath = '';
+        history.pushState({ page: p.id }, '', '?p=' + p.id);
         window.renderPage(p.id);
         const link = document.querySelector('.nav-item[data-page="' + p.id + '"]');
         if (link) {
@@ -260,9 +258,9 @@ document.addEventListener('DOMContentLoaded', function () {
       item.addEventListener('click', (e) => {
         e.preventDefault();
         closeCmdK();
-        const isGithubPages = window.location.pathname.startsWith('/medcare_ai');
-        const basePath = isGithubPages ? '/medcare_ai/' : '/';
-        history.pushState({ page: p.id }, '', basePath + '?p=' + p.id);
+        
+        const basePath = '';
+        history.pushState({ page: p.id }, '', '?p=' + p.id);
         window.renderPage(p.id);
       });
       cmdKResults.appendChild(item);

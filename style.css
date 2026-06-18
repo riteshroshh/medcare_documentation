@@ -932,3 +932,132 @@ pre:hover .copy-btn {
 .content tr:hover td {
   background: rgba(255, 255, 255, 0.02);
 }
+
+/* --- Sleek UI Components -------------------------------------------------- */
+.sleek-hero {
+  margin: 3rem 0;
+}
+.sleek-hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  background: linear-gradient(135deg, #ffffff 0%, #8ab4f8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+.sleek-hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--body);
+  line-height: 1.6;
+  max-width: 800px;
+}
+.sleek-chip {
+  display: inline-block;
+  background: rgba(138, 180, 248, 0.1);
+  color: #8ab4f8;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(138, 180, 248, 0.2);
+}
+.sleek-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+.sleek-card {
+  background: #0d0d0d;
+  border: 1px solid #1a1a1a;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+.sleek-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  border-color: #2a2a2a;
+}
+.sleek-card-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  color: var(--heading);
+}
+.sleek-card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--heading);
+  margin-bottom: 0.75rem;
+}
+.sleek-card-body {
+  font-size: 0.9rem;
+  color: var(--body);
+  flex-grow: 1;
+}
+.sleek-card-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sleek-card-body li {
+  margin-bottom: 0.4rem;
+  position: relative;
+  padding-left: 1.2rem;
+}
+.sleek-card-body li::before {
+  content: "?";
+  position: absolute;
+  left: 0;
+  color: var(--link);
+  font-size: 0.8rem;
+}
+.sleek-section-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--heading);
+  margin: 3rem 0 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.sleek-link-card {
+  display: flex;
+  align-items: center;
+  background: #0d0d0d;
+  border: 1px solid #1a1a1a;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.sleek-link-card:hover {
+  background: #151515;
+  border-color: #2a2a2a;
+}
+.sleek-link-text {
+  flex-grow: 1;
+  color: var(--body);
+  font-size: 0.95rem;
+}
+.sleek-link-text strong {
+  color: var(--heading);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+.sleek-link-arrow {
+  color: var(--link);
+  font-weight: bold;
+}
+

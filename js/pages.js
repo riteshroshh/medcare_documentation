@@ -61,8 +61,9 @@ function renderPage(pageId) {
         `;
       }
     }
+    let isRealPage = !!window.PAGES[pageId];
     let content = fn();
-    if (window.marked && !content.trim().startsWith('<')) {
+    if (window.marked && (isRealPage || !content.trim().startsWith('<'))) {
       content = marked.parse(content);
     }
     el.innerHTML = content;

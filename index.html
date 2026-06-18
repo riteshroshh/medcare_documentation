@@ -12,6 +12,9 @@
   <link rel="stylesheet" href="style.css?v=11">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
   <style>
     pre[class*="language-"] {
       background: rgba(15, 15, 18, 0.65) !important;
@@ -49,41 +52,83 @@
     <!-- SIDEBAR -->
     <nav class="sidebar" id="sidebar">
       <div class="sidebar-section">
-        <a class="nav-item active" href="#" data-page="1_general_documentation_principles_acute_vs_chronic">1 General Documentation Principles Acute Vs Chronic</a>
-        <a class="nav-item " href="#" data-page="1_the_choreography_of_arrival_entrance">1 The Choreography Of Arrival Entrance</a>
-        <a class="nav-item " href="#" data-page="1_the_clinical_blueprint_layout_concept">1 The Clinical Blueprint Layout Concept</a>
-        <a class="nav-item " href="#" data-page="architecture">Architecture</a>
-        <a class="nav-item " href="#" data-page="care_management">Care Management</a>
-        <a class="nav-item " href="#" data-page="cms_documentation_requirements_exhaustive_structured_mapping">Cms Documentation Requirements Exhaustive Structured Mapping</a>
-        <a class="nav-item " href="#" data-page="em_engine">Em Engine</a>
-        <a class="nav-item " href="#" data-page="medcare_ai_advanced_threat_modeling_vulnerability_analysis_matrix">Medcare Ai Advanced Threat Modeling Vulnerability Analysis Matrix</a>
-        <a class="nav-item " href="#" data-page="medcare_ai_architectural_evolution_future_roadmap_2026_2030">Medcare Ai Architectural Evolution Future Roadmap 2026 2030</a>
-        <a class="nav-item " href="#" data-page="medcare_ai_care_management_tracking_system_design">Medcare Ai Care Management Tracking System Design</a>
-        <a class="nav-item " href="#" data-page="medcare_ai_client_high_frequency_rendering_frontend_architecture">Medcare Ai Client High Frequency Rendering Frontend Architecture</a>
-        <a class="nav-item " href="#" data-page="medcare_ai_comprehensive_ethical_ai_bias_mitigation_audit_framework">Medcare Ai Comprehensive Ethical Ai Bias Mitigation Audit Framework</a>
-        <a class="nav-item " href="#" data-page="medcare_ai_core_engineering_internal_developer_faqs_architectural_best_practices">Medcare Ai Core Engineering Internal Developer Faqs Architectural Best Practices</a>
-        <a class="nav-item " href="#" data-page="medcare_ai_core_nlp_architecture_and_systems_design">Medcare Ai Core Nlp Architecture And Systems Design</a>
-        <a class="nav-item " href="#" data-page="medcare_ai_diagnostic_coding_high_dimensional_graph_representations_and_constant_time_ontology_resolution">Medcare Ai Diagnostic Coding High Dimensional Graph Representations And Constant Time Ontology Resolution</a>
-        <a class="nav-item " href="#" data-page="medcare_ai_distributed_temporal_execution_idempotency_architecture">Medcare Ai Distributed Temporal Execution Idempotency Architecture</a>
-        <a class="nav-item " href="#" data-page="medcare_ai_elite_level_rag_pipeline_architecture_implementation_details">Medcare Ai Elite Level Rag Pipeline Architecture Implementation Details</a>
-        <a class="nav-item " href="#" data-page="medcare_ai_elite_persistence_ephemeral_state_architecture_specification">Medcare Ai Elite Persistence Ephemeral State Architecture Specification</a>
-        <a class="nav-item " href="#" data-page="medcare_ai_elite_tier_testing_fuzzing_strategies">Medcare Ai Elite Tier Testing Fuzzing Strategies</a>
-        <a class="nav-item " href="#" data-page="medcare_ai_enterprise_security_compliance_architecture_reference">Medcare Ai Enterprise Security Compliance Architecture Reference</a>
-        <a class="nav-item " href="#" data-page="medcare_ai_e_m_engine_architecture_scoring_logic">Medcare Ai E M Engine Architecture Scoring Logic</a>
-        <a class="nav-item " href="#" data-page="medcare_ai_global_telemetry_observability_architecture">Medcare Ai Global Telemetry Observability Architecture</a>
-        <a class="nav-item " href="#" data-page="medcare_ai_hyperscale_remote_physiologic_monitoring_rpm_integration_architecture">Medcare Ai Hyperscale Remote Physiologic Monitoring Rpm Integration Architecture</a>
-        <a class="nav-item " href="#" data-page="medcare_ai_infrastructure_enterprise_global_scale_ai_operations_manual">Medcare Ai Infrastructure Enterprise Global Scale Ai Operations Manual</a>
-        <a class="nav-item " href="#" data-page="medcare_ai_node_js_api_gateway_architecture_deep_dive_optimization">Medcare Ai Node Js Api Gateway Architecture Deep Dive Optimization</a>
-        <a class="nav-item " href="#" data-page="medcare_ai_preventive_cognitive_services">Medcare Ai Preventive Cognitive Services</a>
-        <a class="nav-item " href="#" data-page="medcare_ai_production_ml_operations_clinical_entity_extraction_architecture">Medcare Ai Production Ml Operations Clinical Entity Extraction Architecture</a>
-        <a class="nav-item " href="#" data-page="medcare_ai_specialty_coding_template_validation_engine_e9_technical_design">Medcare Ai Specialty Coding Template Validation Engine E9 Technical Design</a>
-        <a class="nav-item " href="#" data-page="medcare_ai_system_architecture_manifesto">Medcare Ai System Architecture Manifesto</a>
-        <a class="nav-item " href="#" data-page="medcare_ai_ultra_low_latency_llm_inference_optimization_architecture">Medcare Ai Ultra Low Latency Llm Inference Optimization Architecture</a>
-        <a class="nav-item " href="#" data-page="overview_of_medical_necessity">Overview Of Medical Necessity</a>
-        <a class="nav-item " href="#" data-page="premium_medical_template_design_system_clinical_ethereal">Premium Medical Template Design System Clinical Ethereal</a>
-        <a class="nav-item " href="#" data-page="preventive_services">Preventive Services</a>
-        <a class="nav-item " href="#" data-page="pulmonology_cms_documentation_requirements">Pulmonology Cms Documentation Requirements</a>
-        <a class="nav-item " href="#" data-page="specialty_coding">Specialty Coding</a>
+  <div class="nav-group">
+    <div class="nav-group-toggle open" data-target="group-0">
+      Clinical UX & Workflows <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </div>
+    <div class="nav-sub open" id="group-0">
+      <a class="nav-item " href="#" data-page="1_the_choreography_of_arrival_entrance">1 The Choreography Of Arrival Entrance</a>
+      <a class="nav-item " href="#" data-page="1_the_clinical_blueprint_layout_concept">1 The Clinical Blueprint Layout Concept</a>
+      <a class="nav-item " href="#" data-page="medcare_ai_client_high_frequency_rendering_frontend_architecture">Medcare Ai Client High Frequency Rendering Frontend Architecture</a>
+      <a class="nav-item " href="#" data-page="premium_medical_template_design_system_clinical_ethereal">Premium Medical Template Design System Clinical Ethereal</a>
+    </div>
+  </div>
+  <div class="nav-group">
+    <div class="nav-group-toggle open" data-target="group-1">
+      E/M & Compliance Engine <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </div>
+    <div class="nav-sub open" id="group-1">
+      <a class="nav-item " href="#" data-page="cms_documentation_requirements_exhaustive_structured_mapping">Cms Documentation Requirements Exhaustive Structured Mapping</a>
+      <a class="nav-item " href="#" data-page="em_engine">Em Engine</a>
+      <a class="nav-item " href="#" data-page="medcare_ai_diagnostic_coding_high_dimensional_graph_representations_and_constant_time_ontology_resolution">Medcare Ai Diagnostic Coding High Dimensional Graph Representations And Constant Time Ontology Resolution</a>
+      <a class="nav-item " href="#" data-page="medcare_ai_enterprise_security_compliance_architecture_reference">Medcare Ai Enterprise Security Compliance Architecture Reference</a>
+      <a class="nav-item " href="#" data-page="medcare_ai_e_m_engine_architecture_scoring_logic">Medcare Ai E M Engine Architecture Scoring Logic</a>
+      <a class="nav-item " href="#" data-page="medcare_ai_specialty_coding_template_validation_engine_e9_technical_design">Medcare Ai Specialty Coding Template Validation Engine E9 Technical Design</a>
+      <a class="nav-item " href="#" data-page="pulmonology_cms_documentation_requirements">Pulmonology Cms Documentation Requirements</a>
+      <a class="nav-item " href="#" data-page="specialty_coding">Specialty Coding</a>
+    </div>
+  </div>
+  <div class="nav-group">
+    <div class="nav-group-toggle " data-target="group-2">
+      NLP & Clinical Intelligence <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </div>
+    <div class="nav-sub " id="group-2">
+      <a class="nav-item " href="#" data-page="medcare_ai_core_nlp_architecture_and_systems_design">Medcare Ai Core Nlp Architecture And Systems Design</a>
+      <a class="nav-item " href="#" data-page="medcare_ai_elite_level_rag_pipeline_architecture_implementation_details">Medcare Ai Elite Level Rag Pipeline Architecture Implementation Details</a>
+      <a class="nav-item " href="#" data-page="medcare_ai_preventive_cognitive_services">Medcare Ai Preventive Cognitive Services</a>
+      <a class="nav-item " href="#" data-page="medcare_ai_production_ml_operations_clinical_entity_extraction_architecture">Medcare Ai Production Ml Operations Clinical Entity Extraction Architecture</a>
+    </div>
+  </div>
+  <div class="nav-group">
+    <div class="nav-group-toggle " data-target="group-3">
+      Architecture & Systems <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </div>
+    <div class="nav-sub " id="group-3">
+      <a class="nav-item " href="#" data-page="architecture">Architecture</a>
+      <a class="nav-item " href="#" data-page="medcare_ai_distributed_temporal_execution_idempotency_architecture">Medcare Ai Distributed Temporal Execution Idempotency Architecture</a>
+      <a class="nav-item " href="#" data-page="medcare_ai_elite_persistence_ephemeral_state_architecture_specification">Medcare Ai Elite Persistence Ephemeral State Architecture Specification</a>
+      <a class="nav-item " href="#" data-page="medcare_ai_global_telemetry_observability_architecture">Medcare Ai Global Telemetry Observability Architecture</a>
+      <a class="nav-item " href="#" data-page="medcare_ai_hyperscale_remote_physiologic_monitoring_rpm_integration_architecture">Medcare Ai Hyperscale Remote Physiologic Monitoring Rpm Integration Architecture</a>
+      <a class="nav-item " href="#" data-page="medcare_ai_infrastructure_enterprise_global_scale_ai_operations_manual">Medcare Ai Infrastructure Enterprise Global Scale Ai Operations Manual</a>
+      <a class="nav-item " href="#" data-page="medcare_ai_node_js_api_gateway_architecture_deep_dive_optimization">Medcare Ai Node Js Api Gateway Architecture Deep Dive Optimization</a>
+      <a class="nav-item " href="#" data-page="medcare_ai_system_architecture_manifesto">Medcare Ai System Architecture Manifesto</a>
+      <a class="nav-item " href="#" data-page="medcare_ai_ultra_low_latency_llm_inference_optimization_architecture">Medcare Ai Ultra Low Latency Llm Inference Optimization Architecture</a>
+    </div>
+  </div>
+  <div class="nav-group">
+    <div class="nav-group-toggle " data-target="group-4">
+      Security & Ethical AI <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </div>
+    <div class="nav-sub " id="group-4">
+      <a class="nav-item " href="#" data-page="medcare_ai_advanced_threat_modeling_vulnerability_analysis_matrix">Medcare Ai Advanced Threat Modeling Vulnerability Analysis Matrix</a>
+      <a class="nav-item " href="#" data-page="medcare_ai_comprehensive_ethical_ai_bias_mitigation_audit_framework">Medcare Ai Comprehensive Ethical Ai Bias Mitigation Audit Framework</a>
+      <a class="nav-item " href="#" data-page="medcare_ai_elite_tier_testing_fuzzing_strategies">Medcare Ai Elite Tier Testing Fuzzing Strategies</a>
+    </div>
+  </div>
+  <div class="nav-group">
+    <div class="nav-group-toggle " data-target="group-5">
+      Core Knowledge Base <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </div>
+    <div class="nav-sub " id="group-5">
+      <a class="nav-item" href="#" data-page="1_general_documentation_principles_acute_vs_chronic">1 General Documentation Principles Acute Vs Chronic</a>
+      <a class="nav-item " href="#" data-page="care_management">Care Management</a>
+      <a class="nav-item " href="#" data-page="medcare_ai_architectural_evolution_future_roadmap_2026_2030">Medcare Ai Architectural Evolution Future Roadmap 2026 2030</a>
+      <a class="nav-item " href="#" data-page="medcare_ai_care_management_tracking_system_design">Medcare Ai Care Management Tracking System Design</a>
+      <a class="nav-item " href="#" data-page="medcare_ai_core_engineering_internal_developer_faqs_architectural_best_practices">Medcare Ai Core Engineering Internal Developer Faqs Architectural Best Practices</a>
+      <a class="nav-item " href="#" data-page="overview_of_medical_necessity">Overview Of Medical Necessity</a>
+      <a class="nav-item " href="#" data-page="preventive_services">Preventive Services</a>
+    </div>
+  </div>
       </div>
     </nav>
 

@@ -205,7 +205,7 @@ function renderPage(pageId) {
         const formattedTitle = isPlanned.textContent.trim();
         fn = () => `
           <div class="page-chip" style="color: #ec4899; border-color: rgba(236,72,153,0.3); background: rgba(236,72,153,0.05);">coming soon</div>
-          <h1 style="margin-top: 1rem; font-size: 3rem; background: linear-gradient(135deg, #fff, #a0a0a0); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">\${formattedTitle}</h1>
+          <h1 style="margin-top: 1rem; font-size: 3rem; background: linear-gradient(135deg, #fff, #a0a0a0); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">${formattedTitle}</h1>
           <p class="lead" style="color: var(--muted);">This neural pathway is currently under construction. The weights are still converging.</p>
         `;
       } else {
@@ -258,9 +258,9 @@ function renderPage(pageId) {
       if (currentIndex > 0) {
         const prev = allNavItems[currentIndex - 1];
         let prevTitle = prev.textContent.trim();
-        navHtml += `<a href="\${basePath}\${prev.dataset.page}" data-page="\${prev.dataset.page}" class="page-nav-btn prev">
+        navHtml += `<a href="${basePath}${prev.dataset.page}" data-page="${prev.dataset.page}" class="page-nav-btn prev">
                       <span class="nav-label">&larr; Previous</span>
-                      <span class="nav-title">\${prevTitle}</span>
+                      <span class="nav-title">${prevTitle}</span>
                     </a>`;
       } else {
         navHtml += `<div></div>`;
@@ -269,9 +269,9 @@ function renderPage(pageId) {
       if (currentIndex < allNavItems.length - 1) {
         const next = allNavItems[currentIndex + 1];
         let nextTitle = next.textContent.trim();
-        navHtml += `<a href="\${basePath}\${next.dataset.page}" data-page="\${next.dataset.page}" class="page-nav-btn next">
+        navHtml += `<a href="${basePath}${next.dataset.page}" data-page="${next.dataset.page}" class="page-nav-btn next">
                       <span class="nav-label">Next &rarr;</span>
-                      <span class="nav-title">\${nextTitle}</span>
+                      <span class="nav-title">${nextTitle}</span>
                     </a>`;
       } else {
         navHtml += `<div></div>`;

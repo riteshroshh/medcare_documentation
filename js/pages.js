@@ -47,7 +47,7 @@ window.PAGES['overview'] = () => `
 `;
 
 window.PAGES['note_generation'] = () => `
-<div class="page-chip">medcare_documentation / note_generation</div>
+<div class="page-chip">medcare_ai / note_generation</div>
 <h1>Clinical Note Generation</h1>
 <p>The system is designed to handle multiple specialized note types and structured data inputs efficiently.</p>
 
@@ -77,7 +77,7 @@ window.PAGES['note_generation'] = () => `
 `;
 
 window.PAGES['compliance_validation'] = () => `
-<div class="page-chip">medcare_documentation / compliance_validation</div>
+<div class="page-chip">medcare_ai / compliance_validation</div>
 <h1>CMS Compliance Validation</h1>
 <p>The tool acts as a real-time compliance auditor. It should strictly review documentation against CMS guidelines and immediately identify critical gaps.</p>
 
@@ -95,7 +95,7 @@ window.PAGES['compliance_validation'] = () => `
 `;
 
 window.PAGES['coding_assistance'] = () => `
-<div class="page-chip">medcare_documentation / coding_assistance</div>
+<div class="page-chip">medcare_ai / coding_assistance</div>
 <h1>Coding Assistance</h1>
 <p>Based on the analyzed documentation, the tool should provide explicit billing and coding recommendations.</p>
 
@@ -110,7 +110,7 @@ window.PAGES['coding_assistance'] = () => `
 `;
 
 window.PAGES['audit_readiness'] = () => `
-<div class="page-chip">medcare_documentation / audit_readiness</div>
+<div class="page-chip">medcare_ai / audit_readiness</div>
 <h1>Audit Readiness</h1>
 <p>The system must protect providers against post-payment audits by generating proactive compliance reports.</p>
 
@@ -126,7 +126,7 @@ window.PAGES['audit_readiness'] = () => `
 `;
 
 window.PAGES['specialty_templates'] = () => `
-<div class="page-chip">medcare_documentation / specialty_templates</div>
+<div class="page-chip">medcare_ai / specialty_templates</div>
 <h1>Specialty-Specific Templates</h1>
 <p>Clinical workflows differ significantly by specialty. The assistant must dynamically adapt its templates and heuristic evaluations to support:</p>
 
@@ -142,7 +142,7 @@ window.PAGES['specialty_templates'] = () => `
 `;
 
 window.PAGES['ai_recommendations'] = () => `
-<div class="page-chip">medcare_documentation / ai_recommendations</div>
+<div class="page-chip">medcare_ai / ai_recommendations</div>
 <h1>AI Recommendations</h1>
 <p>The system should not just act as a passive checker—it must be an active cognitive assistant.</p>
 
@@ -251,8 +251,8 @@ function renderPage(pageId) {
     const currentIndex = allNavItems.findIndex(navEl => navEl.dataset.page === pageId);
     
     if (currentIndex !== -1) {
-      const isGithubPages = window.location.pathname.startsWith('/medcare_documentation');
-      const basePath = isGithubPages ? '/medcare_documentation/' : '/';
+      const isGithubPages = window.location.pathname.startsWith('/medcare_ai');
+      const basePath = isGithubPages ? '/medcare_ai/' : '/';
       let navHtml = '<div class="page-navigation">';
       
       if (currentIndex > 0) {
@@ -343,8 +343,8 @@ window.renderPage = renderPage;
 document.addEventListener('DOMContentLoaded', function() {
   const urlParams = new URLSearchParams(window.location.search);
   let pageId = urlParams.get('p');
-  const isGithubPages = window.location.pathname.startsWith('/medcare_documentation');
-  const basePath = isGithubPages ? '/medcare_documentation/' : '/';
+  const isGithubPages = window.location.pathname.startsWith('/medcare_ai');
+  const basePath = isGithubPages ? '/medcare_ai/' : '/';
 
   if (pageId) {
     history.replaceState({ page: pageId }, '', basePath + pageId + (window.location.hash ? window.location.hash : ''));

@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
       document.querySelectorAll('.nav-item').forEach(l => l.classList.remove('active'));
       const home = document.querySelector('.nav-item[data-page="overview"]');
       if (home) home.classList.add('active');
-      const isGithubPages = window.location.pathname.startsWith('/neural_pineapple');
-      const basePath = isGithubPages ? '/neural_pineapple/' : '/';
+      const isGithubPages = window.location.pathname.startsWith('/medcare_documentation');
+      const basePath = isGithubPages ? '/medcare_documentation/' : '/';
       history.pushState({ page: 'overview' }, '', basePath + 'overview');
       window.renderPage('overview');
     });
@@ -47,8 +47,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (toggle) toggle.classList.add('open');
       }
 
-      const isGithubPages = window.location.pathname.startsWith('/neural_pineapple');
-      const basePath = isGithubPages ? '/neural_pineapple/' : '/';
+      const isGithubPages = window.location.pathname.startsWith('/medcare_documentation');
+      const basePath = isGithubPages ? '/medcare_documentation/' : '/';
       history.pushState({ page: pageId }, '', basePath + pageId);
       window.renderPage(pageId);
     });
@@ -60,8 +60,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if (e.state && e.state.page) {
       pageId = e.state.page;
     } else {
-      const isGithubPages = window.location.pathname.startsWith('/neural_pineapple');
-      const basePath = isGithubPages ? '/neural_pineapple/' : '/';
+      const isGithubPages = window.location.pathname.startsWith('/medcare_documentation');
+      const basePath = isGithubPages ? '/medcare_documentation/' : '/';
       const path = window.location.pathname.replace(basePath, '').replace(/^\//, '').replace(/\/$/, '');
       pageId = path || window.location.hash.replace('#', '') || 'overview';
     }
@@ -173,8 +173,8 @@ document.addEventListener('DOMContentLoaded', function () {
       item.addEventListener('click', function () {
         searchResults.style.display = 'none';
         searchInput.value = '';
-        const isGithubPages = window.location.pathname.startsWith('/neural_pineapple');
-        const basePath = isGithubPages ? '/neural_pineapple/' : '/';
+        const isGithubPages = window.location.pathname.startsWith('/medcare_documentation');
+        const basePath = isGithubPages ? '/medcare_documentation/' : '/';
         history.pushState({ page: p.id }, '', basePath + p.id);
         window.renderPage(p.id);
         const link = document.querySelector('.nav-item[data-page="' + p.id + '"]');
@@ -260,8 +260,8 @@ document.addEventListener('DOMContentLoaded', function () {
       item.addEventListener('click', (e) => {
         e.preventDefault();
         closeCmdK();
-        const isGithubPages = window.location.pathname.startsWith('/neural_pineapple');
-        const basePath = isGithubPages ? '/neural_pineapple/' : '/';
+        const isGithubPages = window.location.pathname.startsWith('/medcare_documentation');
+        const basePath = isGithubPages ? '/medcare_documentation/' : '/';
         history.pushState({ page: p.id }, '', basePath + p.id);
         window.renderPage(p.id);
       });

@@ -16,5 +16,5 @@ Evaluates text vectors for risk indicators. "hospitalize" or "dnr" trigger **Hig
 ### Data Element Calculation (\`scoreData\`)
 Calculates a numeric points system based on the array lengths of Review of Systems (ROS), Vitals, and HPI entries, resolving to an overarching Data level.
 
-The final MDM level ($$L_{EM}$$) is determined by sorting the Problem, Risk, and Data levels and selecting the median value, perfectly mirroring AMA 2021 Guidelines.
+The final MDM level ($L_{EM}$) is determined by sorting the Problem, Risk, and Data levels and selecting the median value, perfectly mirroring AMA 2021 Guidelines.
 `;

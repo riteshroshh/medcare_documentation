@@ -187,19 +187,31 @@ function renderPage(pageId) {
 window.renderPage = renderPage;
 
 document.addEventListener('DOMContentLoaded', function() {
+  let pageId = 'overview';
   const urlParams = new URLSearchParams(window.location.search);
-  let pageId = urlParams.get('p');
   
-  const basePath = '';
-
-  if (pageId) {
-    history.replaceState({ page: pageId }, '', window.location.pathname + '?p=' + pageId + (window.location.hash ? window.location.hash : ''));
+  if (urlParams.get('p')) {
+    pageId = urlParams.get('p');
   } else {
-    pageId = window.location.hash.replace('#', '') || 'overview';
-    history.replaceState({ page: pageId }, '', window.location.pathname + '?p=' + pageId + (window.location.hash ? window.location.hash : ''));
+    const pathParts = window.location.pathname.split('/').filter(Boolean);
+    const lastPart = pathParts[pathParts.length - 1];
+    if (lastPart && lastPart !== 'medcare_documentation' && !lastPart.includes('.')) {
+      pageId = lastPart;
+    } else if (lastPart && lastPart.endsWith('.html') && lastPart !== 'index.html' && lastPart !== '404.html') {
+      pageId = lastPart.replace('.html', '');
+    }
   }
   
-  // ensure we map correctly since hashes might include the :: syntax for headers
+  pageId = pageId || window.location.hash.replace('#', '') || 'overview';
   pageId = pageId.split('::')[0];
+
+  const isLocal = window.location.protocol === 'file:';
+  const repoPath = '/medcare_documentation';
+  if (isLocal) {
+    history.replaceState({ page: pageId }, '', window.location.pathname + '?p=' + pageId + (window.location.hash ? window.location.hash : ''));
+  } else {
+    history.replaceState({ page: pageId }, '', repoPath + '/' + pageId + (window.location.hash ? window.location.hash : ''));
+  }
+
   renderPage(pageId);
 });

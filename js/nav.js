@@ -11,8 +11,14 @@ document.addEventListener('DOMContentLoaded', function () {
       const home = document.querySelector('.nav-item[data-page="overview"]');
       if (home) home.classList.add('active');
       
-      const basePath = '';
-      history.pushState({ page: 'overview' }, '', window.location.pathname + '?p=overview');
+      const isLocal = window.location.protocol === 'file:';
+      const repoPath = '/medcare_documentation';
+      
+      if (isLocal) {
+        history.pushState({ page: 'overview' }, '', window.location.pathname + '?p=overview');
+      } else {
+        history.pushState({ page: 'overview' }, '', repoPath + '/overview');
+      }
       window.renderPage('overview');
     });
   }
@@ -48,8 +54,14 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       
-      const basePath = '';
-      history.pushState({ page: pageId }, '', window.location.pathname + '?p=' + pageId);
+      const isLocal = window.location.protocol === 'file:';
+      const repoPath = '/medcare_documentation';
+      
+      if (isLocal) {
+        history.pushState({ page: pageId }, '', window.location.pathname + '?p=' + pageId);
+      } else {
+        history.pushState({ page: pageId }, '', repoPath + '/' + pageId);
+      }
       window.renderPage(pageId);
     });
   });
@@ -61,7 +73,18 @@ document.addEventListener('DOMContentLoaded', function () {
       pageId = e.state.page;
     } else {
       const urlParams = new URLSearchParams(window.location.search);
-      pageId = urlParams.get('p') || window.location.hash.replace('#', '') || 'overview';
+      if (urlParams.get('p')) {
+        pageId = urlParams.get('p');
+      } else {
+        const pathParts = window.location.pathname.split('/').filter(Boolean);
+        const lastPart = pathParts[pathParts.length - 1];
+        if (lastPart && lastPart !== 'medcare_documentation' && !lastPart.includes('.')) {
+          pageId = lastPart;
+        } else if (lastPart && lastPart.endsWith('.html') && lastPart !== 'index.html' && lastPart !== '404.html') {
+          pageId = lastPart.replace('.html', '');
+        }
+      }
+      pageId = pageId || window.location.hash.replace('#', '') || 'overview';
     }
     const parts = pageId.split('::');
     pageId = parts[0];

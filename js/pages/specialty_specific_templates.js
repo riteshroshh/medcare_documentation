@@ -3,12 +3,16 @@ window.PAGES['specialty_specific_templates'] = () => `
 <div class="page-chip">medcare_ai / specialty_specific_templates</div>
 
 
-# Encounter and Specialty Architecture
+# Execution Branching & Time-Based Overrides
 
-The MDM engine utilizes dynamic patient routing based on the \`patient_type\` boolean flag (New vs. Established).
+The architecture accommodates sophisticated specialty templates and diverse clinical encounters through strict execution branching in \`mdmScoringEngine.js\`.
 
-### Total Time Evaluation
-The \`determineEMCode()\` function implements a strict branch evaluation based on \`totalTime\`. For established patients, a \`totalTime >= 40\` deterministically resolves to \`99215\`, bypassing the MDM problem/risk/data complexity calculations entirely. 
+### Time-Based Override Mechanics
+CMS guidelines permit E/M coding based exclusively on total encounter time, entirely bypassing MDM complexity matrices. The \`determineEMCode()\` function implements an $O(1)$ conditional branch to handle this override.
+If the \`totalTime\` parameter is present in the payload, the engine immediately abandons the MDM median derivation. Instead, it evaluates against hard-coded temporal thresholds:
+* For an \`established\` patient, \`totalTime >= 40\` instantly and deterministically resolves to CPT \`99215\`.
+* For a \`new\` patient, \`totalTime >= 60\` resolves to \`99205\`.
 
-The architecture supports horizontal scaling for upcoming specialty templates by passing modular \`patient_type\` context constraints directly into the Gemini prompt wrappers.
+### Dynamic Context Routing
+By passing the \`patient_type\` boolean flag directly into both the deterministic heuristic trees and the upstream LLM prompt wrappers, the system can seamlessly shift its validation logic to support nuanced specialty requirements (e.g., AWV, PCM, or specific Wound Care paradigms) without requiring complex code refactoring.
 `;

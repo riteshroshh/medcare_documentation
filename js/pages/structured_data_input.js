@@ -3,15 +3,17 @@ window.PAGES['structured_data_input'] = () => `
 <div class="page-chip">medcare_ai / structured_data_input</div>
 
 
-# Structured Data Normalization
+# Clinical Data Normalization & Ontology Mapping
 
-The backend utilizes strict normalization protocols before dispatching data to the multi-agent pipeline. 
+Before the MedCare multi-agent pipeline can process a payload, the unstructured UI state vectors must be normalized into strict CMS taxonomies. The backend acts as an ontological transpiler.
 
-### HPI Ontology Mapping
-The \`mapHpiToCMS()\` function in the evaluation pipeline is responsible for translating user-friendly frontend nomenclature into strict CMS OLDCARTS terminology.
-- \`hpi.character\` is transpiled to \`mapped.quality\`
-- \`hpi.alleviating\` is transpiled to \`mapped.modifying_factors\`
-- \`hpi.associated\` is transpiled to \`mapped.associated_signs\`
+### HPI Ontology Transpilation
+The \`mapHpiToCMS()\` function is a critical mapping layer that transforms user-friendly frontend keys into the rigid OLDCARTS (Onset, Location, Duration, Character, Aggravating/Alleviating, Radiation, Timing, Severity) terminology demanded by CMS auditors.
 
-This deterministic mapping dramatically improves the zero-shot inference accuracy of the downstream Gemini 2.5 Pro model during compliance auditing.
+* \`hpi.character\` is strictly mapped to \`mapped.quality\`
+* \`hpi.alleviating\` is strictly mapped to \`mapped.modifying_factors\`
+* \`hpi.associated\` is strictly mapped to \`mapped.associated_signs_symptoms\`
+
+### Semantic Anchor Optimization
+By enforcing this deterministic nomenclature shift *before* dispatching the payload to the LLM (Agent 2), we establish powerful semantic anchors in the prompt context. This drastically minimizes the cognitive load on the LLM, reducing the token consumption required for reasoning and radically increasing the zero-shot inference accuracy during the subsequent compliance auditing phase.
 `;

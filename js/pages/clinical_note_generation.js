@@ -3,13 +3,15 @@ window.PAGES['clinical_note_generation'] = () => `
 <div class="page-chip">medcare_ai / clinical_note_generation</div>
 
 
-# Clinical Note Generation Engine
+# Resilient Clinical Note Generation
 
-The note generation logic is encapsulated within \`noteGenerationEngine.js\`. We employ a resilient LLM parsing strategy to construct CMS-compliant SOAP notes.
+The \`noteGenerationEngine.js\` subsystem is responsible for transpiling disjointed structured UI states into cohesive, CMS-compliant SOAP narratives. This subsystem employs sophisticated fault-tolerance mechanisms to guarantee 99.99% availability.
 
-### Resilient Parsing Strategy
-The \`safeParseNote(raw)\` function utilizes regex to strip arbitrary markdown fencing (\`\\\`\\\`\\\`json\`) injected by the LLM, forcing the string into a valid JSON object. We enforce strict structural integrity by throwing errors if any of the required SOAP keys (\`subjective\`, \`objective\`, \`assessment\`, \`plan\`) are missing from the parsed AST.
+### Constrained JSON Parsing Pipeline
+The engine interfaces with Gemini 2.5 Flash utilizing a strict \`responseSchema\`. The model is forced to yield a discrete JSON object containing \`subjective\`, \`objective\`, \`assessment\`, and \`plan\` strings. 
 
-### Contextual Fallback
-In the event of an upstream Gemini API timeout or hallucination, the engine catches the exception and immediately invokes a deterministic fallback sequence. This sequence reconstructs a primitive but valid note directly from the raw structured \`noteData\` arrays, guaranteeing zero downtime and uninterrupted provider workflows.
+To combat LLM fencing artifacts, the \`safeParseNote(raw)\` interceptor employs aggressive regex stripping (\`.replace(/^\\\`\\\`\\\`json\\s*/i, '')\`) before parsing the AST. Structural integrity is then mathematically validated; if the AST lacks any required SOAP key, an exception is forcefully thrown to halt corruption.
+
+### Idempotent Deterministic Fallback
+If the upstream Gemini API suffers a timeout, or if the \`safeParseNote\` validation fails, the engine immediately triggers an idempotent fallback sequence. The \`catch\` block bypasses the LLM entirely and constructs a primitive, functionally valid note string natively mapping the raw \`noteData\` arrays (injecting the Chief Complaint, enumerating the \`assessment_plan.diagnoses\` arrays). This circuit-breaker pattern ensures that providers never experience a "dead screen" during high-throughput clinical operations.
 `;

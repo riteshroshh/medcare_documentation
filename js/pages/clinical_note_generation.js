@@ -1,6 +1,8 @@
 window.PAGES = window.PAGES || {};
 window.PAGES['clinical_note_generation'] = () => `
 <div class="page-chip">medcare_ai / clinical_note_generation</div>
+
+
 # Clinical Note Generation Engine
 
 The note generation logic is encapsulated within \`noteGenerationEngine.js\`. We employ a resilient LLM parsing strategy to construct CMS-compliant SOAP notes.

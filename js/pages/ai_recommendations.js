@@ -1,6 +1,8 @@
 window.PAGES = window.PAGES || {};
 window.PAGES['ai_recommendations'] = () => `
 <div class="page-chip">medcare_ai / ai_recommendations</div>
+
+
 # Proactive AI Recommendations
 
 The \`aiRecommendationEngine.js\` operates asynchronously alongside the primary scoring engines to generate non-blocking cognitive insights.

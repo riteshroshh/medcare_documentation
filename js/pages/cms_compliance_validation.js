@@ -1,6 +1,8 @@
 window.PAGES = window.PAGES || {};
 window.PAGES['cms_compliance_validation'] = () => `
 <div class="page-chip">medcare_ai / cms_compliance_validation</div>
+
+
 # CMS Compliance Validation
 
 The compliance engine runs a dual-pass evaluation combining deterministic heuristics and LLM heuristics.

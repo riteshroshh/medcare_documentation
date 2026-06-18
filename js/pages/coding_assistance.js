@@ -1,6 +1,8 @@
 window.PAGES = window.PAGES || {};
 window.PAGES['coding_assistance'] = () => `
 <div class="page-chip">medcare_ai / coding_assistance</div>
+
+
 # Algorithmic Coding Assistance
 
 The \`codingEngine.js\` architecture maps clinical narratives to the highest-specificity ICD-10-CM and CPT codes.

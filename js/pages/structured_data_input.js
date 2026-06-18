@@ -1,6 +1,8 @@
 window.PAGES = window.PAGES || {};
 window.PAGES['structured_data_input'] = () => `
 <div class="page-chip">medcare_ai / structured_data_input</div>
+
+
 # Structured Data Normalization
 
 The backend utilizes strict normalization protocols before dispatching data to the multi-agent pipeline. 

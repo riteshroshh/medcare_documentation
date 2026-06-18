@@ -1,6 +1,8 @@
 window.PAGES = window.PAGES || {};
 window.PAGES['expected_outcome'] = () => `
 <div class="page-chip">medcare_ai / expected_outcome</div>
+
+
 # Expected Execution Pipeline
 
 The core execution path is defined in \`evaluationPipeline.js\`. When a provider submits structured clinical data, the system initiates a highly concurrent, multi-agent evaluation sequence:

@@ -1,6 +1,8 @@
 window.PAGES = window.PAGES || {};
 window.PAGES['audit_readiness'] = () => `
 <div class="page-chip">medcare_ai / audit_readiness</div>
+
+
 # MDM Scoring & Audit Readiness
 
 The \`mdmScoringEngine.js\` is a pure deterministic rules engine that calculates Medical Decision Making complexity without relying on non-deterministic AI models.

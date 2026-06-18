@@ -1,6 +1,8 @@
 window.PAGES = window.PAGES || {};
 window.PAGES['specialty_specific_templates'] = () => `
 <div class="page-chip">medcare_ai / specialty_specific_templates</div>
+
+
 # Encounter and Specialty Architecture
 
 The MDM engine utilizes dynamic patient routing based on the \`patient_type\` boolean flag (New vs. Established).

@@ -220,7 +220,11 @@ function renderPage(pageId) {
         `;
       }
     }
-    el.innerHTML = fn();
+    let content = fn();
+    if (window.marked && (content.trim().startsWith('#') || content.includes('\n## ') || content.includes('\n*'))) {
+      content = marked.parse(content);
+    }
+    el.innerHTML = content;
     window.scrollTo(0, 0);
     renderMath(el);
     processCitations(el);
